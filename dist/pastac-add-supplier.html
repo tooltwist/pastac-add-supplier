@@ -1,0 +1,29 @@
+
+<!-- Modal-->
+<div class="modal fade" id="pastac-add-supplier-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header admin-colors">
+        <button class="close" type="button" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add a new {{ctrl.label}}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="new-drinkmaker-name">Name of new {{ctrl.label}}</label>
+          <input class="form-control" id="new-drinkmaker-name" ng-model="ctrl.supplierName">
+          <label for="new-drinkmaker-email">Contact email</label>
+          <input class="form-control" id="new-drinkmaker-email" type="email" ng-model="ctrl.contactEmail">
+          <label for="new-drinkmaker-abn">ABN</label>
+          <input class="form-control" id="new-drinkmaker-abn" type="number" ng-model="ctrl.abn">
+        </div>
+        <div class="alert alert-danger" ng-hide="!ctrl.errmsg">{{ctrl.errmsg}}</div>
+      </div>
+      <div class="modal-footer admin-colors">
+        <button class="btn btn-danger" type="button" ng-click="ctrl.newDrinkmaker()" ng-disabled="ctrl.inProgress">
+          <div class="spinner glyphicon glyphicon-refresh" ng-hide="!ctrl.inProgress"></div>Add {{ctrl.label}}
+        </button>
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

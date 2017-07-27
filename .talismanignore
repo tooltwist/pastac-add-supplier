@@ -1,1 +1,5 @@
 test/test-new-password.html
+dist/pastac-add-supplier.css
+dist/pastac-add-supplier.js
+src/pastac-add-supplier.js
+dist/pastac-add-supplier.min.js
