@@ -22,8 +22,11 @@ This module is treated as a standard Angular 1 component. To use it on an Angula
     pastac-add-supplier(jwt="jwt" handler="handler")
     ```
 
-  Optional parameters include `supplier-type`, which is used to replace the work 'Supplier', and `template`,
-  which can be your custom version of the component template.
+    In most cases this component will be used on a page that uses the `pastac-login` component, which will
+    set `currentUser`, `currentUser.isAdmin`, and `jwt`.
+
+    Optional parameters include `supplier-type`, which is used to replace the word 'Supplier', and `template`
+    which can be your custom version of the component template.
 
 
 1. Invoke the module in your Angular initialization

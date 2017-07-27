@@ -36,15 +36,28 @@ function PastacAddSupplierController($scope, $timeout, $http) {
 
     // Calld when the button is pressed
     ctrl.newDrinkmaker = function() {
-      // See if the user wants to be notified of changes
-      var callback = (ctrl.handler && ctrl.handler.onAddSupplier) ? ctrl.handler.onAddSupplier : null;
 
       // Call TEAservice to do the add
       addSupplier($http, ctrl.jwt, {
         supplierName: ctrl.supplierName,
+        companyName: ctrl.supplierName,
         contactEmail: ctrl.contactEmail,
+        storeId: STORE_ID,
         abn: ctrl.abn
-      }, callback);
+      }, function(supplierId) {
+
+        // See if the user wants to be notified of changes
+        if (!ctrl.handler) {
+          console.log('pastac-add-supplier: NOT calling handler.onAddSupplier (no handler)')
+        } else if (!ctrl.handler.onAddSupplier) {
+          console.log('pastac-add-supplier: NOT calling handler.onAddSupplier (no handler)')
+        } else {
+          console.log('pastac-add-supplier: calling handler.onAddSupplier(' + supplierId + ')')
+          $timeout(function() {
+            ctrl.handler.onAddSupplier(supplierId);
+          }, 1);
+        }
+      });
     }
 
   };//- onInit
@@ -94,7 +107,7 @@ function PastacAddSupplierController($scope, $timeout, $http) {
       // Added okay
       ctrl.inProgress = false;
       ctrl.errmsg = null;
-      $('#add-supplier-modal').modal('hide');
+      $('#pastac-add-supplier-modal').modal('hide');
       if (callback) {
         return callback(response.data, null)
       }
